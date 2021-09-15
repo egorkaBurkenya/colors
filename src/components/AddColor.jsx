@@ -6,6 +6,10 @@ const AddColor = ({addNewColor}) => {
 
     const addColor = (e) => {
         e.preventDefault()
+        if (value[0] != '#') {
+            setValue('Wrong💔')
+            return
+        }
         addNewColor(value)
         setValue('')
     }

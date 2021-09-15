@@ -39,7 +39,6 @@ const ColorArea = ({color}) => {
 
     var rgb = 'rgb(' + (hex = hex.replace('#', '')).match(new RegExp('(.{' + hex.length/3 + '})', 'g')).map(function(l) { return parseInt(hex.length%2 ? l+l : l, 16); }).join(',') + ')';
 
-    // Get array of RGB values
     rgb = rgb.replace(/[^\d,]/g, '').split(',');
 
     var r = rgb[0], g = rgb[1], b = rgb[2];
@@ -52,7 +51,7 @@ const ColorArea = ({color}) => {
     var h, s, l = (max + min) / 2.0;
 
     if(max == min) {
-        h = s = 0;  //achromatic
+        h = s = 0; 
     } else {
         var d = max - min;
         s = (l > 0.5 ? d / (2.0 - max - min) : d / (max + min));
@@ -108,6 +107,7 @@ const ColorArea = ({color}) => {
            <div className="color-area__more">
                 <Color title={'Complementary'} color={hexToComplimentary(color)} ColorArea={convertColor} />
                 <Color title={'Luminance 0.7'} color={ColorLuminance(color, 0.7)} ColorArea={convertColor} />
+                <Color title={'Luminance -0.7'} color={ColorLuminance(color, -0.7)} ColorArea={convertColor} />
            </div>
         </div>
     );
